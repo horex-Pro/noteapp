@@ -31,6 +31,8 @@ function App() {
       pinned: false,
     },
   ]);
+
+  const [selectedNote, setSelectedNote] = useState(notes[0]);
   return (
     <div className="flex min-h-screen bg-linear-to-br from-slate-100 to-slate-200">
       <Sidebar />
@@ -48,11 +50,11 @@ function App() {
               </button>
             </div>
 
-            <NoteList notes={notes} />
+            <NoteList notes={notes} onSelect={setSelectedNote} selectedNote={selectedNote} />
           </div>
 
           <div className="col-span-8 bg-white/70 backdrop-blur-xl border border-white/40 rounded-3xl p-6 shadow-soft">
-            <Editor />
+            <Editor note={selectedNote} />
           </div>
         </div>
       </main>

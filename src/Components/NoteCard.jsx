@@ -1,6 +1,16 @@
-function NoteCard({ note }) {
+function NoteCard({ note, onSelect, isActive }) {
   return (
-    <div className="group bg-white rounded-2xl p-4 border border-slate-100 shadow-sm hover:shadow-soft transition cursor-pointer">
+    <div
+      onClick={onSelect}
+      className={`
+group rounded-2xl p-4 border transition cursor-pointer
+${
+  isActive
+    ? "bg-indigo-50 border-indigo-400 shadow-soft"
+    : "bg-white border-slate-100 shadow-sm hover:shadow-soft"
+}
+`}
+    >
       <div className="flex justify-between items-center mb-2">
         <span className="text-xs bg-slate-100 px-3 py-1 rounded-full">
           {note.category}

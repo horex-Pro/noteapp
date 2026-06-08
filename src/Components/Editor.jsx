@@ -1,11 +1,11 @@
-function Editor() {
+function Editor({ note }) {
   return (
     <div>
       <div className="flex justify-between items-start mb-6">
         <div>
           <span className="text-xs text-slate-400">مشاهده یادداشت</span>
 
-          <h2 className="text-3xl font-bold mt-1">test</h2>
+          <h2 className="text-3xl font-bold mt-1">{note.title}</h2>
         </div>
 
         <div className="flex gap-2">
@@ -20,18 +20,18 @@ function Editor() {
       </div>
 
       <div className="text-sm text-slate-400 mb-6">
-        دسته بندی: {"category"} | تاریخ: {"date"}
+        دسته بندی: {note.category} | تاریخ: {note.date}
       </div>
 
       <div className="space-y-4">
         <input
-          value={"title"}
+          value={note.title}
           readOnly
           className="w-full bg-slate-100 rounded-xl p-4 outline-none"
         />
 
         <textarea
-          value={"content"}
+          value={note.content}
           readOnly
           className="w-full bg-slate-100 rounded-xl p-4 min-h-55 outline-none resize-none"
         />
