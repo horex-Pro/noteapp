@@ -1,4 +1,4 @@
-function NoteCard({ note, onSelect, isActive }) {
+function NoteCard({ note, onSelect, isActive, onDelete }) {
   return (
     <div
       onClick={onSelect}
@@ -33,7 +33,10 @@ ${
             ویرایش
           </button>
 
-          <button className="text-xs px-3 py-1 rounded-lg bg-red-50 text-red-600 hover:bg-red-100">
+          <button
+            onClick={onDelete}
+            className="text-xs px-3 py-1 rounded-lg bg-red-50 text-red-600 hover:bg-red-100"
+          >
             حذف
           </button>
         </div>

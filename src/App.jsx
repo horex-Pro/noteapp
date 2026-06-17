@@ -41,6 +41,13 @@ function App() {
 
     setNotes(newNotes);
   };
+
+  const deleteNoteHandller = (id) => {
+    const newNotes = notes.filter((note) => note.id !== id);
+
+    setNotes(newNotes);
+  };
+
   return (
     <div className="flex min-h-screen bg-linear-to-br from-slate-100 to-slate-200">
       <Sidebar />
@@ -62,6 +69,7 @@ function App() {
               notes={notes}
               onSelect={setSelectedNote}
               selectedNote={selectedNote}
+              onDelete={deleteNoteHandller}
             />
           </div>
 
