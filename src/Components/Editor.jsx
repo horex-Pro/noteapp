@@ -1,4 +1,18 @@
-function Editor({ note }) {
+import { useState } from "react";
+
+function Editor({ note, onSave }) {
+  const [title, setTitle] = useState(note.title);
+  const [content, setContent] = useState(note.content);
+
+  const handleSave = () => {
+    const updatedNote = {
+      ...note,
+      title,
+      content,
+    };
+
+    onSave(updatedNote);
+  };
   return (
     <div>
       <div className="flex justify-between items-start mb-6">
@@ -9,7 +23,10 @@ function Editor({ note }) {
         </div>
 
         <div className="flex gap-2">
-          <button className="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 text-sm">
+          <button
+            onClick={handleSave}
+            className="px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 text-sm"
+          >
             ذخیره
           </button>
 
@@ -25,14 +42,14 @@ function Editor({ note }) {
 
       <div className="space-y-4">
         <input
-          value={note.title}
-          readOnly
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
           className="w-full bg-slate-100 rounded-xl p-4 outline-none"
         />
 
         <textarea
-          value={note.content}
-          readOnly
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
           className="w-full bg-slate-100 rounded-xl p-4 min-h-55 outline-none resize-none"
         />
       </div>
